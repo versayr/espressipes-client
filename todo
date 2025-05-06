@@ -1,0 +1,13 @@
+Add all drink recipes to db 
+Fix issues caused by splitting on ',' ... perhaps select new separator character ('/' ?) 
+Generate a way to show number of shots or number of syrup pumps per drink size 
+Add filter by tag option - new db table of tags? 
+. maintain table of all tags 
+. filter page creates selectable tag buttons 
+. submit endpoint grabs all rows containing all tags
+Remove 'Steamed milk' step from iced straberry matcha latte in db steps
+Commit client & server to git
+
+DONE
+Write 'oz' by sizes 
+Remove 'Steamed' from iced lavender vanilla latte in db ingredients

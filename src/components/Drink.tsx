@@ -86,7 +86,7 @@ const Drink = () => {
             <CardContent className = "text-left" >
               <h3 className = "font-semibold" >Ingredients</h3>
               <p>{ drink.ingredients }</p>
-              <Separator className = "my-4" />
+              <Separator className = "mt-4" />
               <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">
                   <AccordionTrigger className = "font-semibold" >Sizes</AccordionTrigger>
@@ -95,11 +95,11 @@ const Drink = () => {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-              <Separator className = "my-4" />
+              <Separator className = "mb-4" />
               <h3 className = "font-semibold" >Steps</h3>
               { drink.steps.split(',').map((step, index) => 
               <p key = {`${index}`} className = "my-2" > <strong>{ index + 1 } )</strong>  { step } </p>) }
-              <Separator className = "my-4" />
+              <Separator className = "mt-4" />
               <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">
                   <AccordionTrigger className = "font-semibold" >Tags</AccordionTrigger>

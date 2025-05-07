@@ -58,15 +58,15 @@ const Drink = () => {
       { loading ?
         <>
           <CardHeader>
-            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-5 w-[200px]" />
           </CardHeader>
           <CardContent>
             <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[270px] mb-6" />
             <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[270px] mb-6" />
             <Skeleton className="h-4 w-[250px] mb-6" />
-            <Skeleton className="h-4 w-[250px] mb-6" />
-            <Skeleton className="h-4 w-[250px] mb-6" />
-            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[270px] mb-6" />
             <Skeleton className="h-4 w-[250px] mb-6" />
           </CardContent>
         </>
@@ -92,7 +92,7 @@ const Drink = () => {
               <Separator className = "my-4" />
               <h3 className = "font-semibold" >Steps</h3>
               { drink.steps.split(',').map((step, index) => 
-              <p key = {`${index}`} > { index + 1 } - { step } </p>) }
+              <p key = {`${index}`} className = "mb-2" > { index + 1 } - { step } </p>) }
               <Separator className = "my-4" />
               <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">

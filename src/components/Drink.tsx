@@ -54,7 +54,7 @@ const Drink = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Card className= "md:w-[600px]" >
+    <Card className= "sm:w-full md:w-[600px]" >
       { loading ?
         <>
           <CardHeader>

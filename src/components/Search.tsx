@@ -21,7 +21,7 @@ const Search = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/drinks')
+    fetch(`https://espressipes-server.vercel.app/drinks`)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

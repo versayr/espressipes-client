@@ -12,7 +12,7 @@ const Home = () => {
   const [specials, setSpecials] = useState([]);
 
   useEffect(() => {
-    fetch('https://vercel.com/bruce-mannings-projects/espressipes-server/47KwN9d2PZFhXGPpooqytAQjpbXL')
+    fetch(`https://espressipes-server.vercel.app/drinks/specials`)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

@@ -18,11 +18,21 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 
-type Drink = [ number, string, string, string, string, string, string, string ]
+interface Drink {
+  id: number,
+  name: string,
+  ingredients: string,
+  description: string,
+  sizes: string,
+  steps: string,
+  tags: string,
+  createdAt: "DATETIME",
+  isCurrentSpecial: boolean,
+}
 
 const Drink = () => {
   const { id } = useParams();
-  const [drink, setDrink] = useState([]);
+  const [drinks, setDrinks] = useState<Drink[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,56 +45,67 @@ const Drink = () => {
       }
     })
     .then(data => {
-      setDrink(data.rows[0]);
+      setDrinks(data);
       setLoading(false);
     })
     .catch(error => {
       console.error('Fetch error:', error);
     });
-  }, [id]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Card className= "md:w-[600px]" >
       { loading ?
-        <Skeleton className="h-4 w-[250px]" />
-        :
         <>
           <CardHeader>
-            <CardTitle className = 'text-xl'>
-              { drink[1] }
-            </CardTitle>
-            <CardDescription>
-              { drink[3] }
-            </CardDescription>
+            <Skeleton className="h-4 w-[250px]" />
           </CardHeader>
-          <Separator className = "my-4" />
-          <CardContent className = "text-left" >
-            <h3 className = "font-semibold" >Ingredients</h3>
-            <p>{ drink[2] }</p>
-            <Separator className = "my-4" />
-            <h3 className = "font-semibold" >Sizes (in ounces)</h3>
-            <p>{ drink[4] }</p>
-            <Separator className = "my-4" />
-            <h3 className = "font-semibold" >Steps</h3>
-            {drink[5].split(',').map((step, index) => 
-                <p>
-                  { index + 1 } - { step }
-                </p>
-            )}
-            <Separator className = "my-4" />
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className = "font-semibold" >Tags</AccordionTrigger>
-                <AccordionContent>
-                  {drink[6].split(',').map((tag, index) => 
-                      <p key={ index }>
-                        { tag }
-                      </p>
-                  )}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <CardContent>
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
+            <Skeleton className="h-4 w-[250px] mb-6" />
           </CardContent>
+        </>
+        :
+        <>
+          { drinks.map(drink =>
+          <div key = {`${drink.id}${drink.name}`}>
+            <CardHeader>
+              <CardTitle className = 'text-xl'>
+                { drink.name }
+              </CardTitle>
+              <CardDescription>
+                { drink.description }
+              </CardDescription>
+            </CardHeader>
+            <Separator className = "my-4" />
+            <CardContent className = "text-left" >
+              <h3 className = "font-semibold" >Ingredients</h3>
+              <p>{ drink.ingredients }</p>
+              <Separator className = "my-4" />
+              <h3 className = "font-semibold" >Sizes (in ounces)</h3>
+              <p>{ drink.sizes }</p>
+              <Separator className = "my-4" />
+              <h3 className = "font-semibold" >Steps</h3>
+              { drink.steps.split(',').map((step, index) => 
+              <p key = {`${index}`} > { index + 1 } - { step } </p>) }
+              <Separator className = "my-4" />
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className = "font-semibold" >Tags</AccordionTrigger>
+                  <AccordionContent>
+                    {drink.tags.split(',').map((tag, index) => 
+                    <p key={ index }> { tag } </p>)} 
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CardContent>
+          </div>
+                      )}
           <Separator />
           <CardFooter className = "place-content-center" >
             <Button asChild >

@@ -92,7 +92,7 @@ const Drink = () => {
               <Separator className = "my-4" />
               <h3 className = "font-semibold" >Steps</h3>
               { drink.steps.split(',').map((step, index) => 
-              <p key = {`${index}`} className = "mb-2" > { index + 1 } - { step } </p>) }
+              <p key = {`${index}`} className = "my-2" > <strong>{ index + 1 } )</strong>  { step } </p>) }
               <Separator className = "my-4" />
               <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">

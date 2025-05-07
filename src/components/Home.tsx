@@ -30,8 +30,8 @@ const Home = () => {
 
   return (
     <>
-      <h1 className = "font-bold text-2xl">Espresso Recipes</h1>
-      <Tabs defaultValue = "specials" className = "md:w-[600px] text-lg mt-6">
+      <h1 className = "font-bold text-2xl mt-6">Espresso Recipes</h1>
+      <Tabs defaultValue = "specials" className = "sm:w-full md:w-[600px] text-lg mt-6">
         <TabsList className = "grid w-full grid-cols-3">
           <TabsTrigger value = "specials">Specials</TabsTrigger>
           <TabsTrigger value = "search">Search</TabsTrigger>

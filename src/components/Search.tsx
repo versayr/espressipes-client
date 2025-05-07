@@ -39,7 +39,7 @@ const Search = () => {
   }, []);
 
   return (
-    <Card>
+    <Card className= "sm:w-full md:w-[600px]" >
       <CardHeader>
         <CardTitle>Search</CardTitle>
         <CardDescription>Type to find the recipe you need.</CardDescription>
